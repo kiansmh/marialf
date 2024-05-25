@@ -39,6 +39,32 @@
                 }
             });
         });
+
+        // Manejar el clic en el botón "Mostrar Registros"
+        document.getElementById('mostrarRegistros').addEventListener('click', async function() {
+            // Limpiar cualquier contenido previo en el contenedor de registros
+            document.getElementById('registrosContainer').innerHTML = '';
+
+            // Consultar los registros de la tabla "usuarios"
+            const { data, error } = await supabase.from('usuarios').select();
+
+            if (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al cargar los registros.');
+            } else {
+                // Mostrar los registros en el contenedor
+                const registrosContainer = document.getElementById('registrosContainer');
+                if (data && data.length > 0) {
+                    const registrosHTML = data.map(registro => {
+                        return `<div>Nombre: ${registro.nombre}, Correo: ${registro.correo}, Sexo: ${registro.sexo}, Acepto términos: ${registro.acepto_terminos ? 'Sí' : 'No'}</div>`;
+                    }).join('');
+                    registrosContainer.innerHTML = registrosHTML;
+                } else {
+                    registrosContainer.innerHTML = '<div>No hay registros disponibles.</div>';
+                }
+            }
+        });
+        });
     </script>
 </head>
 <body>
@@ -70,6 +96,11 @@
                 <button type="submit">Registrarse</button>
             </div>
         </form>
+    </div>
+    <div class="registros-container">
+        <h2>Registros</h2>
+        <button id="mostrarRegistros">Mostrar Registros</button>
+        <div id="registrosContainer"></div>
     </div>
 </body>
 </html>
