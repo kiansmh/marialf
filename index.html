@@ -5,19 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
     <script>
-        function loadSupabaseScript(callback) {
-            var script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.27.0/dist/umd/supabase.min.js';
-            script.async = true;
-            script.onload = callback;
-            document.head.appendChild(script);
-        }
-        
-        loadSupabaseScript(function() {
-            const supabaseUrl = 'https://fxeqlmtqfxtswfajsvnz.supabase.co';
-            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZXFsbXRxZnh0c3dmYWpzdm56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjQ5NjEsImV4cCI6MjAzMjIwMDk2MX0.COsYahdaD1jBmp-3vAash8yOAXLJFI2CR-7g9mNFUtE';
-            const supabase = createClient(supabaseUrl, supabaseKey);
+        document.addEventListener('DOMContentLoaded', function() {
+            const supabaseUrl = 'https://xyzcompany.supabase.co';  // Reemplaza con tu URL de Supabase
+            const supabaseKey = 'your-anon-key';  // Reemplaza con tu API Key de Supabase
+            const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
             document.getElementById('registrationForm').addEventListener('submit', async function(event) {
                 event.preventDefault();
