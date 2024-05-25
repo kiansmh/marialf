@@ -36,17 +36,22 @@ body {
 .form-group .terms-label {
     display: inline;
 }
-.form-group button {
-    width: 100%;
-    padding: 10px;
+.button-container {
+    display: flex;
+}
+.button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
     background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 4px;
-    color: #fff;
-    font-size: 16px;
     cursor: pointer;
-    top-margin: 10px;
+    margin-right: 10px; /* Espacio entre los botones */
 }
-.form-group button:hover {
+.button-container button:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último botón */
+}
+.button-container button:hover {
     background-color: #0056b3;
 }
