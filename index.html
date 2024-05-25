@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Registro</title>
+    <title>Maria Lopez Fernandez</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.4/dist/umd/supabase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const supabaseUrl = 'https://fxeqlmtqfxtswfajsvnz.supabase.co';
-            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZXFsbXRxZnh0c3dmYWpzdm56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjQ5NjEsImV4cCI6MjAzMjIwMDk2MX0.COsYahdaD1jBmp-3vAash8yOAXLJFI2CR-7g9mNFUtE';
-            const supabase = createClient(supabaseUrl, supabaseKey);
+            const { createClient } = supabase
+            const _supabase = createClient('https://fxeqlmtqfxtswfajsvnz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZXFsbXRxZnh0c3dmYWpzdm56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjQ5NjEsImV4cCI6MjAzMjIwMDk2MX0.COsYahdaD1jBmp-3vAash8yOAXLJFI2CR-7g9mNFUtE');
 
             document.getElementById('registrationForm').addEventListener('submit', async function(event) {
                 event.preventDefault();
@@ -21,7 +20,7 @@
                 const terms = document.getElementById('terms').checked;
 
                 try {
-                    const { data, error } = await supabase
+                    const { data, error } = await _supabase
                         .from('usuarios')
                         .insert([
                             { nombre: name, correo: email, sexo: gender, acepto_terminos: terms }
