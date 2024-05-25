@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const { createClient } = supabase;
     const _supabase = createClient('https://fxeqlmtqfxtswfajsvnz.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZXFsbXRxZnh0c3dmYWpzdm56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjQ5NjEsImV4cCI6MjAzMjIwMDk2MX0.COsYahdaD1jBmp-3vAash8yOAXLJFI2CR-7g9mNFUtE');
 
-   // Función para registrar un usuario
-    document.getElementById('registrationForm').addEventListener('submit', async function(event) {
+   document.getElementById('registrationForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -31,16 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Función para mostrar los registros
     document.getElementById('mostrarRegistros').addEventListener('click', async function() {
-        // Consultar los registros de la tabla "usuarios"
         const { data, error } = await _supabase.from('usuarios').select();
 
         if (error) {
             console.error('Error:', error);
             alert('Hubo un error al cargar los registros.');
         } else {
-            // Mostrar los registros en el contenedor
             const registrosContainer = document.getElementById('registrosContainer');
             if (data && data.length > 0) {
                 const registrosHTML = data.map(registro => {
