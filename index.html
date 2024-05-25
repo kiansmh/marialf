@@ -16,14 +16,14 @@
                 event.preventDefault();
 
                 const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const gender = document.getElementById('gender').value;
+                const mail = document.getElementById('mail').value;
+                const sex = document.getElementById('sex').value;
                 const terms = document.getElementById('terms').checked;
 
                 const { data, error } = await supabase
                     .from('usuarios')
                     .insert([
-                        { nombre: name, correo: email, sexo: gender, acepto_terminos: terms }
+                        { name: name, mail: mail, sex: sex, terms: terms }
                     ]);
 
                 if (error) {
@@ -44,12 +44,12 @@
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="mail">Correo Electrónico:</label>
+                <input type="mail" id="mail" name="mail" required>
             </div>
             <div class="form-group">
-                <label for="gender">Sexo:</label>
-                <select id="gender" name="gender" required>
+                <label for="sex">Sexo:</label>
+                <select id="sex" name="sex" required>
                     <option value="">Seleccione</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
