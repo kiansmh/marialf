@@ -6,7 +6,6 @@
     <title>Formulario de Registro</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        // Cargar el script de Supabase de manera asincrónica
         function loadSupabaseScript(callback) {
             var script = document.createElement('script');
             script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.27.0/dist/umd/supabase.min.js';
@@ -14,11 +13,10 @@
             script.onload = callback;
             document.head.appendChild(script);
         }
-
-        // Una vez que el script de Supabase se ha cargado completamente, inicializar la aplicación
+        
         loadSupabaseScript(function() {
-            const supabaseUrl = 'https://fxeqlmtqfxtswfajsvnz.supabase.co';  // Reemplaza con tu URL de Supabase
-            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZXFsbXRxZnh0c3dmYWpzdm56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjQ5NjEsImV4cCI6MjAzMjIwMDk2MX0.COsYahdaD1jBmp-3vAash8yOAXLJFI2CR-7g9mNFUtE';  // Reemplaza con tu API Key de Supabase
+            const supabaseUrl = 'https://fxeqlmtqfxtswfajsvnz.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ4ZXFsbXRxZnh0c3dmYWpzdm56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2MjQ5NjEsImV4cCI6MjAzMjIwMDk2MX0.COsYahdaD1jBmp-3vAash8yOAXLJFI2CR-7g9mNFUtE';
             const supabase = createClient(supabaseUrl, supabaseKey);
 
             document.getElementById('registrationForm').addEventListener('submit', async function(event) {
