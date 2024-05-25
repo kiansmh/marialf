@@ -42,9 +42,6 @@
 
         // Manejar el clic en el botón "Mostrar Registros"
         document.getElementById('mostrarRegistros').addEventListener('click', async function() {
-            // Limpiar cualquier contenido previo en el contenedor de registros
-            document.getElementById('registrosContainer').innerHTML = '';
-
             // Consultar los registros de la tabla "usuarios"
             const { data, error } = await supabase.from('usuarios').select();
 
@@ -63,7 +60,6 @@
                     registrosContainer.innerHTML = '<div>No hay registros disponibles.</div>';
                 }
             }
-        });
         });
     </script>
 </head>
